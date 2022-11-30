@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Form, Input, Label, Button, Box } from './Form.styled'
+import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
   state = {
@@ -33,6 +34,8 @@ class ContactForm extends Component {
   };
 
   render() {
+    console.log(this.handleSubmit)
+    
     return (
       <Box>
         <Form onSubmit={this.handleSubmit}>
@@ -71,3 +74,6 @@ class ContactForm extends Component {
 
 export default ContactForm;
 
+ContactForm.propTypes = {
+  handleSubmit: PropTypes.func,
+};

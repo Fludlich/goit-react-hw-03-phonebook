@@ -34,7 +34,6 @@ class ContactForm extends Component {
   };
 
   render() {
-    console.log(this.handleSubmit)
     
     return (
       <Box>

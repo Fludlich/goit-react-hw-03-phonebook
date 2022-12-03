@@ -2,9 +2,7 @@ import { Component } from 'react';
 import { ContactList } from './ContactList/ContactList';
 import ContactForm from './Form/Form';
 import { Filter } from './Filter/Filter';
-  import { Phonebook } from '../components/ContactList/ContactList.styled'
-  import PropTypes from 'prop-types';
-  
+import { Phonebook } from '../components/ContactList/ContactList.styled';
 
 export class App extends Component {
   state = {
@@ -43,14 +41,14 @@ export class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-  componentDidMount () {
-    const contacts = localStorage.getItem('contacts')
-    const parsedContacts = JSON.parse(contacts)
-    this.setState({contacts: parsedContacts})
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    this.setState({ contacts: parsedContacts });
   }
-  componentDidUpdate (prevProps, prevState){
-    if(this.state.contacts !== prevState.contacts){
-      localStorage.setItem( 'contacts', JSON.stringify(this.state.contacts) )
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
   render() {
@@ -58,10 +56,8 @@ export class App extends Component {
     return (
       <Phonebook>
         <h1>Phonebook</h1>
-        <ContactForm
-          onSubmit={this.formSubmitHandler}
-        />  
-        <h2>Contacts</h2> 
+        <ContactForm onSubmit={this.formSubmitHandler} />
+        <h2>Contacts</h2>
         <Filter value={this.state.filter} onSearchContact={this.changeFilter} />
         <ContactList
           contactsList={vizibleContacts}

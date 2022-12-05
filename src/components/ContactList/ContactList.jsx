@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Box, Text, List, Item, Button } from './ContactList.styled'
 
 export const ContactList = ({ contactsList, onRemove }) => {
+
   return (
     <Box>
       {contactsList.length === 0 ? (

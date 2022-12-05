@@ -6,7 +6,7 @@ import { Phonebook } from '../components/ContactList/ContactList.styled';
 
 export class App extends Component {
   state = {
-    contacts: localStorage.getItem('contacts') || [],
+    contacts: JSON.parse(localStorage.getItem('contacts')) || [],
     filter: '',
   };
   changeFilter = event => {
@@ -36,13 +36,15 @@ export class App extends Component {
   getVisibleContacts = () => {
     const { filter, contacts } = this.state;
     const normalizedFilter = filter.toLowerCase();
-    if(!contacts){
+    if(contacts){
       return contacts.filter(contact =>
         contact.name.toLowerCase().includes(normalizedFilter)
       );
-     
+    }else{
+      return contacts
     }
-    return contacts
+   
+    
   };
 
   componentDidUpdate(prevProps, prevState) {
